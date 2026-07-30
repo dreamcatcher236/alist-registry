@@ -1,0 +1,14 @@
+# Signing material must never enter this repository. See README's "Signing
+# and trust" section: registry-held private keys are kept offline by
+# maintainers, not in git, not in CI secrets.
+*.ed25519
+*.pem
+*private*key*
+*signing-key*
+
+# Local build/validation scratch space.
+dist-local/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store

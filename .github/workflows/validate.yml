@@ -1,0 +1,42 @@
+name: Validate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Determine base ref for version-monotonicity checks
+        id: base
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch origin "${{ github.base_ref }}" --depth=1
+            echo "ref=origin/${{ github.base_ref }}" >> "$GITHUB_OUTPUT"
+          else
+            # push to main: compare against the commit before this push, if any
+            if git rev-parse "${{ github.event.before }}" >/dev/null 2>&1 && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+              echo "ref=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
+            else
+              echo "ref=" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
+      - name: Validate every entry (schema + https + sha256 + version monotonicity)
+        run: |
+          if [ -n "${{ steps.base.outputs.ref }}" ]; then
+            python3 scripts/validate.py --base-ref "${{ steps.base.outputs.ref }}"
+          else
+            python3 scripts/validate.py
+          fi

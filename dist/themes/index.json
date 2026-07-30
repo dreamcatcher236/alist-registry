@@ -1,0 +1,12 @@
+[
+  {
+    "id": "dev.alist.registry.minimal",
+    "name": "Registry Minimal",
+    "author": "alist-registry",
+    "version": "1.0.0",
+    "url": "https://raw.githubusercontent.com/AlistGo/alist-registry/main/themes/dev.alist.registry.minimal/theme.json",
+    "sha256": "58227bdb5fdb384a88b66ab9c730fdeca971b3a4140ff774e740493c2a496e4d",
+    "has_js": false,
+    "signature": "d8d093500abed37d5cd1ef4475a2621dcbb7483bc034bd0d38736599ded631374433d001fe906e1b78978ee6a064094c2892479af4d995191d83d8798fa3c401"
+  }
+]

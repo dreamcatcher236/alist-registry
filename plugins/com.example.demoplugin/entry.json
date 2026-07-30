@@ -1,0 +1,13 @@
+{
+  "id": "com.example.demoplugin",
+  "name": "Demo Plugin",
+  "version": "0.2.0",
+  "kind": "StorageDriver",
+  "core_api": "^0.1.0",
+  "sha256": "6267b57c6695e32c5654b367e20d6b45c0c9a13a3c5f59c70ba54a2690d84e82",
+  "url": "https://github.com/AlistGo/alist-registry/releases/download/demo-plugin-v1/demo-plugin-0.2.0.tar.gz",
+  "sig": "7ywuIjDquMB+j8Jyc0XG4J6q4peKbuzvdwpF6RWCKilvNgc8gUoOxob9elLBZ+xz8GHYVqVS9/EX63RixnB2Cg==",
+  "license": "MIT",
+  "source_url": "https://github.com/alist-org/alist/tree/main/tools/demo-plugin",
+  "pricing": "free"
+}
